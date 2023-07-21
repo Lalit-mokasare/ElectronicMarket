@@ -86,15 +86,15 @@ public class UserServiceImpl implements UserService {
         return this.modelMapper.map(user,UserDto.class);
     }
 
-//    @Override
-//    public UserDto getUserByEmail(String email) {
-//
-//        User user = this.userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not Found Your email id  !! "));
-//
-//
-//        return this.modelMapper.map(user,UserDto.class);
-//    }
-//
+    @Override
+    public UserDto getUserByEmail(String email) {
+
+        User user = this.userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not Found Your email id  !! "));
+
+
+        return this.modelMapper.map(user,UserDto.class);
+    }
+
 //    @Override
 //    public List<UserDto> searchUser(String keyword) {
 //
@@ -104,4 +104,4 @@ public class UserServiceImpl implements UserService {
 //        return userDtos;
 //    }
 //}
-*/
+//*/
