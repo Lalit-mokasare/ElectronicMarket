@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         return this.modelMapper.map(user2,UserDto.class);
     }
 
- /* *//**//*  @Override
+  @Override
     public UserDto updateUser(UserDto userDto, String userId) {
 
         User user = this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not Found given id"));
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
+ /*   @Override
     public void deleteUser(String userId) {
         User user = this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not Found given id"));
         this.userRepository.delete(user);
@@ -104,4 +104,4 @@ public class UserServiceImpl implements UserService {
         return userDtos;
     }
 }
-*/}
+*/
