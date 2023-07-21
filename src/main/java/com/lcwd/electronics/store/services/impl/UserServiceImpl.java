@@ -70,15 +70,15 @@ public class UserServiceImpl implements UserService {
         this.userRepository.delete(user);
     }
 
-//    @Override
-//    public List<UserDto> getAllUser() {
-//
-//        List<User> users = userRepository.findAll();
-//        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
-//
-//        return userDtos;
-//    }
-//
+    @Override
+    public List<UserDto> getAllUser() {
+
+        List<User> users = userRepository.findAll();
+        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+
+        return userDtos;
+    }
+
 //    @Override
 //    public UserDto getUser(String userId) {
 //        Optional<User> user = this.userRepository.findById(userId);
