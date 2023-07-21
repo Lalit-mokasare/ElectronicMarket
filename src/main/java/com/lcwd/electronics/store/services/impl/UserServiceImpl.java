@@ -79,13 +79,13 @@ public class UserServiceImpl implements UserService {
         return userDtos;
     }
 
-//    @Override
-//    public UserDto getUser(String userId) {
-//        Optional<User> user = this.userRepository.findById(userId);
-//
-//        return this.modelMapper.map(user,UserDto.class);
-//    }
-//
+    @Override
+    public UserDto getUser(String userId) {
+        Optional<User> user = this.userRepository.findById(userId);
+
+        return this.modelMapper.map(user,UserDto.class);
+    }
+
 //    @Override
 //    public UserDto getUserByEmail(String email) {
 //
@@ -104,4 +104,4 @@ public class UserServiceImpl implements UserService {
 //        return userDtos;
 //    }
 //}
-//*/
+*/
