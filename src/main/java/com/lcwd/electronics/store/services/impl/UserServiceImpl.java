@@ -64,44 +64,44 @@ public class UserServiceImpl implements UserService {
     }
 
 
- /*   @Override
+   @Override
     public void deleteUser(String userId) {
         User user = this.userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User not Found given id"));
         this.userRepository.delete(user);
     }
 
-    @Override
-    public List<UserDto> getAllUser() {
-
-        List<User> users = userRepository.findAll();
-        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
-
-        return userDtos;
-    }
-
-    @Override
-    public UserDto getUser(String userId) {
-        Optional<User> user = this.userRepository.findById(userId);
-
-        return this.modelMapper.map(user,UserDto.class);
-    }
-
-    @Override
-    public UserDto getUserByEmail(String email) {
-
-        User user = this.userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not Found Your email id  !! "));
-
-
-        return this.modelMapper.map(user,UserDto.class);
-    }
-
-    @Override
-    public List<UserDto> searchUser(String keyword) {
-
-        List<User> users = this.userRepository.findByNameContaining(keyword);
-        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
-
-        return userDtos;
-    }
-}
-*/
+//    @Override
+//    public List<UserDto> getAllUser() {
+//
+//        List<User> users = userRepository.findAll();
+//        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+//
+//        return userDtos;
+//    }
+//
+//    @Override
+//    public UserDto getUser(String userId) {
+//        Optional<User> user = this.userRepository.findById(userId);
+//
+//        return this.modelMapper.map(user,UserDto.class);
+//    }
+//
+//    @Override
+//    public UserDto getUserByEmail(String email) {
+//
+//        User user = this.userRepository.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not Found Your email id  !! "));
+//
+//
+//        return this.modelMapper.map(user,UserDto.class);
+//    }
+//
+//    @Override
+//    public List<UserDto> searchUser(String keyword) {
+//
+//        List<User> users = this.userRepository.findByNameContaining(keyword);
+//        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+//
+//        return userDtos;
+//    }
+//}
+//*/
