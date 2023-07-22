@@ -95,13 +95,17 @@ public class UserServiceImpl implements UserService {
         return this.modelMapper.map(user,UserDto.class);
     }
 
-//    @Override
-//    public List<UserDto> searchUser(String keyword) {
-//
-//        List<User> users = this.userRepository.findByNameContaining(keyword);
-//        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
-//
-//        return userDtos;
-//    }
-//}
-//*/
+    @Override
+    public List<UserDto> searchUser(String keyword) {
+
+        List<User> users = this.userRepository.findByNameContaining(keyword);
+        List<UserDto> userDtos = users.stream().map(user -> this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+
+        return userDtos;
+    }
+
+    @Override
+    public List<UserDto> getAllUser(int pageNumber, int pageSize) {
+        return null;
+    }
+}

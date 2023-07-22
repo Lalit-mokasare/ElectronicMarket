@@ -38,6 +38,8 @@ public interface UserService {
 
     List<UserDto> searchUser(String keyword);
 
+    List<UserDto> getAllUser(int pageNumber, int pageSize);
+
     // other user specific feature
 
 
