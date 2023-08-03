@@ -138,7 +138,7 @@ class UserServiceImplTest {
         Assertions.assertEquals(userDto.getName(),updatedUser.getName(),"Name is not valid");
 
         // multiple assertion are valid...
-
+        //
 
     }
 
