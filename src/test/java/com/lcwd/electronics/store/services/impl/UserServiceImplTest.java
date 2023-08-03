@@ -188,11 +188,32 @@ class UserServiceImplTest {
     }
 
     @Test
-    void getUser() {
+    void getUserTest() {
+
+        String userId ="userIdTest";
+        Mockito.when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+
+
+        // actual call of service method
+
+        UserDto userDto = userServiceImpl.getUser(userId);
+
+        Assertions.assertNotNull(userDto);
+        Assertions.assertEquals(user.getName(),userDto.getName(),"Name not matched !!");
+
+
+
     }
 
     @Test
     void getUserByEmail() {
+
+        String emailId="lmokasare@gmail.com";
+        Mockito.when(userRepository.findByEmail("lmokasare@gmail.com")).thenReturn(Optional.of(user));
+        UserDto userDto = userServiceImpl.getUserByEmail(emailId);
+
+
+
     }
 
     @Test
