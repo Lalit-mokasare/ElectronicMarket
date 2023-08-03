@@ -212,7 +212,8 @@ class UserServiceImplTest {
         Mockito.when(userRepository.findByEmail("lmokasare@gmail.com")).thenReturn(Optional.of(user));
         UserDto userDto = userServiceImpl.getUserByEmail(emailId);
 
-
+        Assertions.assertNotNull(userDto);
+        Assertions.assertEquals(user.getEmail(),userDto.getEmail(),"Email not match !!");
 
     }
 
