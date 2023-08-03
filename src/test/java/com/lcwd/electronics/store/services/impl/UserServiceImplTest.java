@@ -218,7 +218,43 @@ class UserServiceImplTest {
     }
 
     @Test
-    void searchUser() {
+    void searchUserTest() {
+
+       User user1= User.builder().name("Chetan")
+                .about("This is create method")
+                .email("lmokasare@gmail.com")
+                .gender("Male")
+                .password("Lalit@123")
+                .imageName("Lalit.png")
+                .build();
+
+
+
+        User user2= User.builder().name("Vishal")
+                .about("This is create method")
+                .email("lmokasare@gmail.com")
+                .gender("Male")
+                .password("Lalit@123")
+                .imageName("Lalit.png")
+                .build();
+
+
+        User user3= User.builder().name("Nilesh")
+                .about("This is create method")
+                .email("lmokasare@gmail.com")
+                .gender("Male")
+                .password("Lalit@123")
+                .imageName("Lalit.png")
+                .build();
+
+        String keywords ="Lalit";
+          Mockito.when(userRepository.findByNameContaining(keywords)).thenReturn(Arrays.asList(user,user1,user2,user3));
+
+        List<UserDto> userDtos = userServiceImpl.searchUser(keywords);
+
+        Assertions.assertEquals(4,userDtos.size(),"size not matched!!");
+
+
     }
 
     @Test
