@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,22 +56,10 @@ class UserServiceImplTest {
                 .build();
 
 
-        user1 =  User.builder().name("Akshy")
-                .about("This is create method")
-                .email("Akshay@gmail.com")
-                .gender("Male")
-                .password("Akshay@123")
-                .imageName("Akshay.png")
-                .build();
 
 
-        user2 =  User.builder().name("Suraj")
-                .about("This is create method")
-                .email("Suraj@gmail.com")
-                .gender("Male")
-                .password("Suraj@123")
-                .imageName("Suraj.png")
-                .build();
+
+
 
 
         userList = Arrays.asList(user,user1,user2);
@@ -160,7 +149,42 @@ class UserServiceImplTest {
     }
 
     @Test
-    void getAllUser() {
+    void getAllUserTest() {
+
+
+
+        user1 =  User.builder().name("Akshy")
+                .about("This is create method")
+                .email("Akshay@gmail.com")
+                .gender("Male")
+                .password("Akshay@123")
+                .imageName("Akshay.png")
+                .build();
+
+
+
+        user2 =  User.builder().name("Suraj")
+                .about("This is create method")
+                .email("Suraj@gmail.com")
+                .gender("Male")
+                .password("Suraj@123")
+                .imageName("Suraj.png")
+                .build();
+
+
+        List<User> userList=Arrays.asList(user,user1,user2);
+        Page<User> page =new PageImpl<>(userList);
+
+
+        Mockito.when(userRepository.findAll((Pageable) Mockito.any())).thenReturn(page);
+
+
+
+        List<UserDto> allUser = userServiceImpl.getAllUser(1,2);
+
+      //  Assertions.assertEquals(3,allUser.size()
+
+
     }
 
     @Test
