@@ -162,6 +162,17 @@ class CategoryServiceImplTest {
     }
 
     @Test
-    void get() {
+    void getTest() {
+
+        String categoryid="Lalit";
+        Mockito.when(categoryRepository.findById(Mockito.any())).thenReturn(Optional.of(category));
+
+        // Actual call of service method
+
+        CategoryDto categoryDto1 = categoryServiceimpl.get(categoryid);
+
+        Assertions.assertNotNull(categoryDto);
+        Assertions.assertEquals(category.getTitle(),categoryDto1.getTitle(),"title not matched !!!");
+
     }
 }
