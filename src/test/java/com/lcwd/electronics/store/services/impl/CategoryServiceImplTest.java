@@ -1,8 +1,10 @@
 package com.lcwd.electronics.store.services.impl;
 
 import com.lcwd.electronics.store.dtos.CategoryDto;
+import com.lcwd.electronics.store.dtos.PagebleResponse;
 import com.lcwd.electronics.store.dtos.UserDto;
 import com.lcwd.electronics.store.entities.Category;
+import com.lcwd.electronics.store.entities.User;
 import com.lcwd.electronics.store.repositories.CategoryRepository;
 import com.lcwd.electronics.store.repositories.UserRepository;
 import org.junit.jupiter.api.Assertions;
@@ -12,9 +14,15 @@ import org.mockito.Mockito;
 import org.mockito.stubbing.OngoingStubbing;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,6 +43,10 @@ class CategoryServiceImplTest {
 
     Category category;
 
+
+    Category category1;
+
+     Category category2;
 
 
     CategoryDto categoryDto;
@@ -124,7 +136,29 @@ class CategoryServiceImplTest {
     }
 
     @Test
-    void getAll() {
+    void getAllTest() {
+
+         category1=Category.builder()
+                .title("")
+                .description("This is mobile category")
+                .coverImage("mobile.png")
+                .build();
+
+
+        category2=Category.builder()
+                .title("Mobile")
+                .description("This is mobile category")
+                .coverImage("mobile.png")
+                .build();
+
+        List<Category> categoryList= Arrays.asList(category,category1,category2);
+        Page<Category> page =new PageImpl<>(categoryList);
+
+        Mockito.when(categoryRepository.findAll((Pageable) Mockito.any())).thenReturn(page);
+
+        PagebleResponse<CategoryDto> allCategory=categoryServiceimpl.getAll(1,2,"title","asc");
+        Assertions.assertEquals(3,allCategory.getContent().size());
+
     }
 
     @Test
