@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -81,7 +83,30 @@ class CategoryServiceImplTest {
 
 
     @Test
-    void update() {
+    void updateTest() {
+
+        String categoryid="edfg";
+        CategoryDto categoryDto=CategoryDto.builder()
+                .title("Java developer")
+                .description("this is backend java developer")
+                .coverImage("abc.png")
+                .build();
+
+        Mockito.when(categoryRepository.findById(Mockito.anyString())).thenReturn(Optional.of(category));
+        Mockito.when(categoryRepository.save(Mockito.any())).thenReturn(category);
+
+        CategoryDto updatecategory = categoryServiceimpl.update(categoryDto, categoryid);
+        System.out.println(updatecategory.getTitle());
+        System.out.println(updatecategory.getDescription());
+
+        Assertions.assertNotNull(categoryDto);
+        Assertions.assertEquals(categoryDto.getTitle(),updatecategory.getTitle(),"Title is not valid");
+
+
+
+
+
+
     }
 
     @Test
